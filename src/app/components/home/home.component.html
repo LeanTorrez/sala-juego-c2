@@ -1,0 +1,55 @@
+<section class="vh-100 gradient-custom" style="background: linear-gradient(to right, #15aab2, #ca25fc);">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">     
+              @if(auth.enSesion){
+
+                <div class="card bg-dark text-white" id="card-home">
+                  <div class="card-body text-center">
+                    <div class="row">
+                      <h2 class="my-5">Juegos</h2>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <img src="ahorcado.png" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                      <div class="col">
+                        <img src="blackjack.png" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                      <div class="col">
+                        <img src="mayor-menor.svg" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                      <div class="col">
+                        <img src="preguntados.png" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }@else {
+                <div class="card bg-dark text-white" id="card-home">
+                  <div class="card-body text-center">
+                    <div class="row">
+                      <h2 class="my-5">Juegos</h2>
+                    </div>
+                    <div class="row" style="filter: blur(2px);">
+                      <div class="col">
+                        <img src="ahorcado.png" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                      <div class="col">
+                        <img src="blackjack.png" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                      <div class="col">
+                        <img src="mayor-menor.svg" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                      <div class="col">
+                        <img src="preguntados.png" alt="error" class="img-thumbnail" id="img-juegos">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+        
+        </div>
+      </div>
+    </div>
+</section>

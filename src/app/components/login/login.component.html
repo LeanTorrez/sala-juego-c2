@@ -1,0 +1,57 @@
+<section class="vh-100 gradient-custom " style="background: linear-gradient(to right, #6a11cb, #2575fc);">
+
+    <div class="container py-5 h-100">
+          <div class="card bg-dark text-white" style="width: 50rem; ;border-radius: 1rem; background: rgba(0, 0, 0, 0.7);">
+            <div class="card-body text-center">                              
+                        <form  [formGroup]="form">
+                            <h2 class="mb-3 fw-normal text-center">Ingrese sus datos</h2>               
+                            <div class="div-form">
+                                <div class="row my-3">
+                                        <div class="col-auto">
+                                            <label name="email" for="floatingInput">Email:</label>
+                                        </div>
+                                        <div class="col">
+                                            <input name="email" formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="mail@ejemplo.com" [(value)]="email">
+                                        </div>
+                                </div>
+                                @if(form.get('email'); as aux){
+                                    @if(aux.invalid && (aux.dirty || aux.touched) && ( aux.hasError("required") || aux.hasError("email"))){
+                                        <div class="alert alert-danger" role="alert">
+                                            El formato del Email es incorrecto
+                                        </div>
+                                    }
+                                }
+
+                                <div class="row my-3">
+                                    <div class="col-auto">
+                                        <label name="contrasenia" for="floatingPassword">Clave:</label>
+                                    </div>
+                                    <div class="col">
+                                        <input name="contrasenia" type="password" formControlName="clave" class="form-control" id="floatingPassword" placeholder="contraseña" [(value)]="clave">
+                                    </div>
+                                </div>
+                                @if(form.get('clave'); as aux){
+                                    @if(aux.invalid && (aux.dirty || aux.touched) && ( aux.hasError("required") || aux.hasError("minlength"))){
+                                        <div class="alert alert-danger" role="alert">
+                                            La contraseña necesita como minimo 6 caracteres
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </form>
+                            <div class="row">
+                                <div class="col-auto">             
+                                    <button class="btn btn-primary w-100 py-2" (click)="this.llenarUsuario(1)">Usuario 1</button>         
+                                </div>  
+                                <div class="col-auto">             
+                                    <button class="btn btn-primary w-100 py-2" (click)="this.llenarUsuario(2)">Usuario 2</button>         
+                                </div>  
+                                <div class="col-auto">             
+                                    <button class="btn btn-primary w-100 py-2" (click)="this.iniciarSesion()">Iniciar Sesion</button>         
+                                </div>  
+                            </div>
+                            <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
+            </div>
+          </div>     
+    </div>
+</section>

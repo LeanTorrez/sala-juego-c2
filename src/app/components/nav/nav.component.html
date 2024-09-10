@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button class="btn btn-secondary btn-large" routerLink="home">Home</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-secondary btn-large" routerLink="quien-soy">Quien Soy</button>
+            </div>
+            @if(!auth.enSesion){
+                <div class="col-auto">
+                    <button class="btn btn-secondary btn-large" routerLink="login">Iniciar Sesion</button>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-secondary btn-large" routerLink="registro">Registrarse</button>
+                </div>
+            }@else {
+                <div class="col-auto">
+                    <button class="btn btn-secondary btn-large" (click)="cerrarSesion()">Cerrar Sesion</button>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <div class="d-flex align-items-stretch">
+                        <div class="card bg-secondary">
+                            <div class="col-auto span2">
+                                <img src="usuario.png" alt="usuario" width="50px" height="50px">
+                            </div>
+                            <div class="col-auto span10 text-light">
+                                {{auth.email}}
+                            </div>
+                        </div>
+                    </div>
+                </div>             
+            }
+        </div>
+    </div>
+</nav>
