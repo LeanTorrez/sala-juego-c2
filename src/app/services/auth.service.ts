@@ -37,7 +37,11 @@ export class AuthService {
 
       this.router.navigate(["/home"]);
     })
-    .catch(( error) => console.error(error))
+    .catch(( error) => {
+      this.toast.error(this.errores(error.code),"ERROR",{
+        positionClass:"toast-top-center",timeOut:3000
+      });
+    })
   }
 
   registrarUsuario(email:string, clave:string){
@@ -59,6 +63,33 @@ export class AuthService {
 
       this.router.navigate(["/home"]);
     })
-    .catch(( error) => console.error(error))
+    .catch(( error) => {
+      this.toast.error(this.errores(error.code),"ERROR",{
+        positionClass:"toast-top-center",timeOut:3000
+      });
+    })
+  }
+
+  errores(error:string){
+    let mensaje :string = "";
+    switch(error){
+      case "auth/invalid-email":
+      case "auth/wrong-password":
+      case "auth/invalid-credential":
+        mensaje = "Clave o Email incorrectos";
+        break;
+      case "auth/user-not-found":
+        mensaje = "Usuario no existente";
+        break;
+      case "auth/too-many-requests":
+        mensaje = "Error en la conexion al servidor";
+        break;
+      case "auth/email-already-in-use":
+        mensaje = "El email que ingreso ya esta registrado";
+        break;
+      default:
+        mensaje = "Error no identificado";
+    }
+    return mensaje;
   }
 }

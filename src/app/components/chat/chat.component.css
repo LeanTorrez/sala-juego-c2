@@ -1,0 +1,59 @@
+#chatHome{
+    bottom: 0.5rem;
+    left: 0.5rem;
+    position: fixed;
+    width: 300px;
+    max-height: 500px;
+    min-height: 200px;
+}
+.contener-chat{
+    overflow-y: scroll;
+    overflow: scroll;
+    padding: 0.3rem;
+    max-height: 360px;
+}
+.contener-chat::-webkit-scrollbar{
+    display: none;
+}
+.enviado{
+    display: block;
+    float: right;
+    background-color: #78C091;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 5px;
+    text-align: left;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+.recibido{
+    display: block;
+    float: left;
+    background-color: #4251F0;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 5px;
+    text-align: left;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.chat-email{
+    float:right;
+    font-size: 10px;
+    margin-bottom: 1px;
+}
+
+.chat-fecha{
+    font-size: 8px;
+}
+
+.chat-mensaje{
+    padding: 2px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.enviado > .chat-email{
+    float:left;
+}

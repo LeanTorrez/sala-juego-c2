@@ -21,4 +21,8 @@ export const routes: Routes = [
         path:"quien-soy",
         loadComponent: () => import("./components/quien-soy/quien-soy.component").then(e => e.QuienSoyComponent)
     },
+    {
+        path:"juegos",
+        loadChildren: () => import("./components/juegos/juegos.routes")
+    } 
 ];
