@@ -1,0 +1,51 @@
+
+#imagen{
+    border-radius: 10px;
+    display: flex;
+    height: 663px;
+    background-repeat: no-repeat;
+}
+.span-ahorcado{
+    background-color: white;
+    color: black;
+    font-size: 45px;
+    border-radius: 10px;
+    margin: 1px;
+}
+.palabra-ahorcado{
+    display: flex;
+    position: absolute;
+    bottom: 11rem;
+    left: 35%;
+}
+.span-exito{
+    background-color: rgb(32, 192, 32);
+    color: black;
+    font-size: 50px;
+    border-radius: 10px; 
+}
+.btn-xl {
+    padding: 10px 20px;
+
+    font-size: 30px;
+    border-radius: 10px;
+}
+#btnReiniciar{
+    position: absolute;
+    left: 35rem;
+    top: 1.4em;
+}
+#puntos{
+    position: absolute;
+    font-size: 25px;
+    padding-left: 25px;
+}
+#terminoPartida{
+    position: absolute;
+    top: 25%;
+    left: 38%;
+    opacity: 0.9;
+    border-radius: 20px;
+    font-size: 25px;
+    color: black;
+}

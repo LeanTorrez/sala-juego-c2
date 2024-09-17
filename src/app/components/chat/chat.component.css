@@ -6,6 +6,12 @@
     max-height: 500px;
     min-height: 200px;
 }
+#chat-cerrado{
+    bottom: 0.5rem;
+    left: 0.5rem;
+    position: fixed;
+    width: 200px;
+}
 .contener-chat{
     overflow-y: scroll;
     overflow: scroll;

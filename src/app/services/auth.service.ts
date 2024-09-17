@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "@angular/fire/auth";
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut} from "@angular/fire/auth";
 import { Firestore, collection, collectionData,setDoc, DocumentData, doc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { FireStoreService } from './fire-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   auth = inject(Auth);
   router = inject(Router);
   toast = inject(ToastrService);
-  fireStore = inject(Firestore);
+  fireStore = inject(FireStoreService);
 
   enSesion = false;
   email = "";
@@ -25,15 +26,7 @@ export class AuthService {
       this.email = email;
       data.user.getIdToken().then(token => this.token = token);
 
-
-      const col = collection(this.fireStore,"logs");
-      const docRef = doc(col);
-
-      setDoc(docRef,{
-      id: docRef.id,
-      email: email,
-      fecha: new Date()
-      })
+      this.fireStore.insertarLogs(email);
 
       this.router.navigate(["/home"]);
     })
@@ -51,15 +44,7 @@ export class AuthService {
       this.email = email;
       data.user.getIdToken().then(token => this.token = token);
 
-      const col = collection(this.fireStore,"logs");
-      const docRef = doc(col);
-
-      console.log("envio data a firestore");
-      setDoc(docRef,{
-        id: docRef.id,
-        email: email,
-        fecha: new Date()
-      })
+      this.fireStore.insertarLogs(email);
 
       this.router.navigate(["/home"]);
     })
@@ -68,6 +53,12 @@ export class AuthService {
         positionClass:"toast-top-center",timeOut:3000
       });
     })
+  }
+
+  cerrarSesion(){
+    signOut(this.auth)
+    .then()
+    .catch();
   }
 
   errores(error:string){

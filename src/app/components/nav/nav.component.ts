@@ -18,6 +18,7 @@ export class NavComponent {
     this.auth.enSesion = false;
     this.auth.email = "";
     this.auth.token = "";
+    this.auth.cerrarSesion();
     this.router.navigate(["/home"]);
   }
 }

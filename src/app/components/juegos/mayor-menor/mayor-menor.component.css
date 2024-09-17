@@ -1,0 +1,26 @@
+#imagen{
+    border-radius: 10px;
+    display: flex;
+    height: 757px;
+    background-repeat: no-repeat;
+}
+#cartaActual,#cartaNueva
+{
+    position: absolute;
+    top: 18em;
+}
+#cartaActual{
+    left: 15em;
+}
+#cartaNueva{
+    left: 52em;
+}
+#puntos{
+    position: absolute;
+    font-size: 30px;
+    left: 46%;
+}
+.title{
+    position: absolute;
+    left: 45%;
+}

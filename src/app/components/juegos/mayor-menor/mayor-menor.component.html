@@ -1,1 +1,37 @@
-<p>mayor-menor works!</p>
+
+<h3 class="text-center text-light title">MAYOR O MENOR</h3>
+<div class="container py-5 h-100">
+    <div class="card bg-dark text-white" style="border-radius: 1rem; background: rgba(0, 0, 0, 0.7);">
+        <div class="card-body text-center">                              
+            
+            <img src={{imgActualCarta}} alt="actual" id="cartaActual">
+            <img src={{imgNuevaCarta}} alt="imgNuevaCarta" id="cartaNueva">
+
+          <div class="row" id="puntos">
+            <span class="text-light">PUNTOS {{puntos}}</span>
+            </div>
+
+        <div class="row">
+            <div class="col">
+                <img src="./juegos/mayor-menor/mayor-menor.png" alt="mayor-menor" id="imagen">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="justify-content-end d-flex">
+                    <button class="btn btn-success btn-lg" (click)="mayorMenorCarta('mayor')">MAYOR</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="justify-content-start d-flex">
+                    <button class="btn btn-danger btn-lg" (click)="mayorMenorCarta('menor')">MENOR</button>
+                </div>
+            </div>
+        </div>   
+               
+        </div>
+      </div>     
+</div>
+
+

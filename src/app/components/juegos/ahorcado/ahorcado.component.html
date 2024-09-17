@@ -1,1 +1,71 @@
-<p>ahorcado works!</p>
+<!-- <section class="vh-100 gradient-custom" style="background: linear-gradient(to right, #6112b5, #095def);"> -->
+    <div class="container py-2">
+          <div class="card bg-dark text-white" style="border-radius: 1rem; background: rgba(0, 0, 0, 0.7);">
+            <div class="card-body text-center">                              
+                       
+                <div class="row">
+                    <div class="col" id="puntos">
+                        <p class="text-start text-light"> 
+                            @if(this.contadorErrores!=6){
+                                Te quedan 
+                                {{6-this.contadorErrores}} 
+                                Intentos
+                                <!-- {{palabraSelec}} -->
+                            }@else{
+                                PERDISTE TODAS TUS VIDAS
+                            }
+                        </p>
+                    </div>
+                    
+                    <div class="col justify-content-end" id="btnReiniciar">
+                            <button class="btn btn-primary btn-lg"
+                            (click)="reiniciarAhorcado()">REINICIAR<br> 
+                            <fa-icon [icon]="faReinicio" ></fa-icon>         
+                            </button>      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img src="./juegos/ahorcado/ahorcado{{contadorErrores}}.png" alt="ahorcado" id="imagen">
+                    </div>
+                </div>
+                @if(this.terminacionPartida){
+                    <div class="card bg-light" id="terminoPartida">
+                        <div class="card-header">
+                            <p class="text-center">{{this.terminacionMensaje}}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-center">La palabra era {{this.palabraSelec}}</p>
+                        </div>
+                        <div class="card-footer text-muted justify-content-center d-flex">
+                            <button class="btn btn-primary btn-lg" (click)="this.comienzoJuego()">Jugar Otra Vez</button>
+                        </div>
+                    </div>  
+                }
+        
+               <!-- <div class="container" style="background-color: grey; width: auto;border-radius: 10px;"> -->
+                    <div class="row palabra-ahorcado">
+                        <div class="text-center">
+                            @for (item of palabraSelec; track $index) {
+                                <span class="text-center span-ahorcado"
+                                id="caracter{{$index}}">___</span>
+                            }
+                        </div>
+                    </div>
+                <!-- </div>  -->
+                    
+                <div class="row">
+                    @for (letra of alfabeto; track $index) {
+                        <div class="col">
+                            <button type="text" class="btn btn-primary btn-xl my-1" 
+                                        id="letra{{letra}}" 
+                                        (click)="letraAhorcado(letra)">{{letra}}</button>
+                        </div>
+                    }
+                </div>
+                
+            </div>
+          </div>     
+    </div>
+<!-- </section> -->
+
