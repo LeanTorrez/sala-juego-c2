@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject} from '@angular/core';
+import { Component, inject, OnDestroy} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
@@ -17,7 +17,7 @@ import { FireStoreService } from '../../services/fire-store.service';
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
-export class ChatComponent {
+export class ChatComponent implements OnDestroy{
   public msj!:string;
   public msjArray = new Array<Mensaje>;
   public mostrarChat = true;
@@ -53,8 +53,11 @@ export class ChatComponent {
     const obs = this.fireStore.observableChat();
     this.suscribe = obs.subscribe((respuesta) => {
       this.msjArray = respuesta.sort( (b: Mensaje, a: Mensaje) => b.fecha.valueOf() - a.fecha.valueOf()); 
-      this.msjArray = respuesta;
     });
   }
-  
+
+  ngOnDestroy(): void {
+    this.suscribe.unsubscribe();
+  }
+
 }

@@ -2,11 +2,13 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faLock, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FontAwesomeModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -14,6 +16,9 @@ export class LoginComponent {
 
   auth = inject(AuthService);
   toast = inject(ToastrService);
+
+  faClave = faLock;
+  faEmail = faEnvelope;
 
   email = "";
   clave = "";

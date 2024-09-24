@@ -1,14 +1,67 @@
-<section class="vh-100 gradient-custom " style="background: linear-gradient(to right, #6a11cb, #2575fc);">
 
-    <div class="container py-5 h-100">
-          <div class="card bg-dark text-white" style="width: 50rem; ;border-radius: 1rem; background: rgba(0, 0, 0, 0.7);">
-            <div class="card-body text-center">                              
-                       
+<h3 class="text-center text-light title">BLACKJACK</h3>
+  <div class="container py-5 h-100">
+        <div class="card bg-dark text-white py-3 px-3" style="border-radius: 1rem; background: rgba(0, 0, 0, 0.7);">
+          <div class="card-body text-center py-5" id="imagen">                              
+                      
+            <div class="row">
+              <div class="col" id="puntos-crupier">
+                  <p class="text-light">PUNTOS CRUPIER {{this.puntosCrupier}}</p>
+              </div>
+          </div>
+          <div class="row my-5">
+              @for (item of this.cartasCrupier; track $index) {
+                  @if($index == 1 && !this.mostrarCartas){
+                      <div class="col-1 mx-5">
+                          <img src="https://www.deckofcardsapi.com/static/img/back.png" alt="Usuario Carta">
+                      </div>
+                  }@else {
+                      <div class="col-1 mx-5">
+                          <img src={{item.image}} alt="Usuario Carta">
+                      </div>
+                  }
+              }
+          </div>
+
+          <div class="row my-1">
+              @for (item of this.cartasJugador; track $index) {
+                  <div class="col-1 mx-5">
+                      <img src={{item.image}} alt="Usuario Carta">
+                  </div>
+              }
+          </div>
+          <div class="row ">
+              <div class="col" id="puntos-jugador">
+                  <p class="text-light">TUS PUNTOS {{this.puntosJugador}}</p>
+              </div>
+              
+              <div class="btn-group" role="group" aria-label="Basic example">
+                  <div class="col justify-content-end d-flex mx-2">
+                          <button class="btn btn-warning btn-lg" (click)="hit()">HIT</button>
+                  </div>
+                  <div class="col justify-content-start d-flex">
+                          <button class="btn bg-info btn-lg" (click)="stand()">STAND</button>
+                  </div>
+              </div>
+             
+          </div>
 
 
+          
+          </div>
+        </div>     
+  </div>
 
-                
-            </div>
-          </div>     
-    </div>
-</section>
+  @if(this.partidaTerminada){
+    <div class="card" id="terminoPartida">
+        <div class="card-header">
+            <p>{{this.mensajeTitulo}}</p>
+        </div>
+        <div class="card-body">
+            <p>{{this.mensajePartida}}</p>
+        </div>
+        <div class="card-footer text-muted justify-content-center align-item-center d-flex">
+            <button class="btn btn-primary btn-lg" (click)="this.comenzarBlackjack()">Jugar Otra Vez</button>
+        </div>
+    </div>      
+}

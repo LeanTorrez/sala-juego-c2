@@ -1,0 +1,31 @@
+#imagen{
+    border-radius: 1rem;
+    background-image: url("./../../../../assets/juegos/blackjack/blackjack.jpg");
+    background-repeat: no-repeat;
+    width: auto;
+}
+#puntos-crupier{
+    position: absolute;
+    right: 26em;
+    font-size: 20px;
+}
+#puntos-jugador{
+    position: absolute;
+    right: 26em;
+    font-size: 20px;
+}
+#terminoPartida{
+    display: flex;
+    position: absolute;
+    top: 47%;
+    left: 40%;
+    background-color: purple;
+    opacity: 0.9;
+    border-radius: 20px;
+    font-size: 25px;
+    color: white;
+}
+.title{
+    position: absolute;
+    left: 47%;
+}

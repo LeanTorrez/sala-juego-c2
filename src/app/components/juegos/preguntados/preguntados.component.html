@@ -1,15 +1,54 @@
-<section class="vh-100 gradient-custom " style="background: linear-gradient(to right, #6a11cb, #2575fc);">
 
-    <div class="container py-5 h-100">
-          <div class="card bg-dark text-white" style="width: 50rem; ;border-radius: 1rem; background: rgba(0, 0, 0, 0.7);">
-            <div class="card-body text-center">                              
-                       
+<h3 class="text-center text-light title">PREGUNTADOS</h3>
+<div class="container py-5 h-100">
+  <div class="card bg-dark text-white py-2 px-2">
+    <div class="card-body text-center" id="imagen">                              
+      <div id="puntos">
+          <p>NUMERO DE PREGUNTAS {{ this.contadorPreguntas + 1}} / 24</p>
+      </div>
+      
+                @if(!this.juegoFinalizado){
+                    <div class="row my-5">
+                        <div class="col">
+                            <p class="h1" id="preguntaTxt">¿Cual es el nombre de este Pais?</p>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                      <div class="col">
+                        <img [src]="imagenPregunta" alt="pais">  
+                      </div>
+                    </div>
 
+                    <div class="row my-3">
+                        @for (item of this.opciones; track $index) {
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary btn-lg w-100 mx-2 my-1" (click)="responderPregunta(item)" id="opcion{{$index}}">{{item}}</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
 
-                
-            </div>
-          </div>     
-    </div>
-</section>
+                }@else{
+                    <div class="row">
+                        <div class="col">
+                            <p id="preguntaTxt">Terminaste el preguntados</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p id="preguntaTxt">Respuestas correctas {{this.puntos}} / 24</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-primary btn-lg" (click)="getPreguntas()">Reiniciar Juego</button>
+                        </div>
+                    </div>
+                }    
+
+        </div>
+      </div>     
+</div>
 

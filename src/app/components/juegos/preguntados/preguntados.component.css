@@ -1,0 +1,41 @@
+#imagen{
+    border-radius: 1rem;
+    background-image: url("./../../../../assets/juegos/preguntados/preguntados.jpg");
+    background-repeat: no-repeat;
+    width: auto;
+}
+#pregunta{
+    position: absolute;
+    top: 35%;
+    left: 36%;
+    background-color: white;
+    padding: 10px 10px;
+    border-radius: 20px;
+}
+#preguntaTxt{
+    font-size: 25px;
+    color: white;
+    font-weight: 100;
+    font: 25px solid bold;
+}
+.btn-xl {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+#puntos{
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    color: black;
+    font-weight: 100;
+    font: 25px solid bold;
+}
+.title{
+    position: absolute;
+    left: 46%;
+}

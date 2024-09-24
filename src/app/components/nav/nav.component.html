@@ -18,18 +18,15 @@
                 <div class="col-auto">
                     <button class="btn btn-secondary btn-large" (click)="cerrarSesion()">Cerrar Sesion</button>
                 </div>
-                <div class="col d-flex justify-content-end">
-                    <div class="d-flex align-items-stretch">
-                        <div class="card bg-secondary">
-                            <div class="col-auto span2">
-                                <img src="usuario.png" alt="usuario" width="50px" height="50px">
-                            </div>
-                            <div class="col-auto span10 text-light">
-                                {{auth.email}}
-                            </div>
-                        </div>
-                    </div>
-                </div>             
+                <div class="col-auto bg-secondary text-light mx-2" style="border-radius: 10px;">
+
+                    <button class="btn btn-secondary btn-large" (click)="cerrarSesion()">
+                        <fa-icon [icon]="faSalir"></fa-icon>
+                    </button>
+
+                    <fa-icon [icon]="faUsuario" style="padding: 5px;"></fa-icon>{{auth.email}}
+                </div> 
+                      
             }
         </div>
     </div>

@@ -7,12 +7,16 @@
                             <h2 class="mb-3 fw-normal text-center">Ingrese sus datos</h2>               
                             <div class="div-form">
                                 <div class="row my-3">
-                                        <div class="col-auto mx-5">
-                                            <label name="email" for="floatingInput">Email:</label>
+                                    <div class="row">
+                                        <div class="col-auto py-2">
+                                            <label name="email" for="floatingInput"><fa-icon [icon]="faEmail" style="padding: 5px;"></fa-icon>Email:</label>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col">
                                             <input name="email" formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="mail@ejemplo.com">
                                         </div>
+                                    </div>
                                 </div>
                                 @if(form.get('email'); as aux){
                                     @if(aux.invalid && (aux.dirty || aux.touched) && ( aux.hasError("required") || aux.hasError("email"))){
@@ -23,11 +27,15 @@
                                 }
 
                                 <div class="row my-3">
-                                    <div class="col-auto mx-4">
-                                        <label name="contrasenia" for="floatingPassword">Constraseña:</label>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <label name="contrasenia" for="floatingPassword"><fa-icon [icon]="faClave" style="padding: 5px;"></fa-icon>Constraseña:</label>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <input name="contrasenia" type="password" formControlName="clave" class="form-control" id="floatingPassword" placeholder="contraseña">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input name="contrasenia" type="password" formControlName="clave" class="form-control" id="floatingPassword" placeholder="contraseña">
+                                        </div>
                                     </div>
                                 </div>
                                 @if(form.get('clave'); as aux){
@@ -39,11 +47,15 @@
                                 }
 
                                 <div class="row my-3">
-                                    <div class="col-auto">
-                                        <label name="repContrasenia" for="claveRepite">Repite la contraseña</label>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <label name="repContrasenia" for="claveRepite"><fa-icon [icon]="faClave" style="padding: 5px;"></fa-icon>Repite la contraseña</label>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <input name="repContrasenia" type="password" formControlName="claveComparar" class="form-control" id="claveRepite" placeholder="repita contraseña">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input name="repContrasenia" type="password" formControlName="claveComparar" class="form-control" id="claveRepite" placeholder="repita contraseña">
+                                        </div>
                                     </div>
                                 </div>
                                 @if(form.get('claveComparar'); as aux){
@@ -61,7 +73,7 @@
                             </div>
                         </form>
                             <div class="d-flex flex-row-reverse">
-                                <div class="p-2">
+                                <div class="mx-4 py-3">
                                     <button class="btn btn-primary btn-large" (click)="this.registrar()">Registrar</button>
                                 </div>  
                             </div>

@@ -2,11 +2,13 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faLock, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, FontAwesomeModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
@@ -14,6 +16,10 @@ export class RegistroComponent {
 
   toast = inject(ToastrService);
   auth = inject(AuthService);
+
+  faClave = faLock;
+  faEmail = faEnvelope;
+
 
   email = "";
   clave = "";
