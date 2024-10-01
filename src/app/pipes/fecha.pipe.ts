@@ -12,7 +12,7 @@ export class FechaPipe implements PipeTransform {
     /* Correjir */
    
     const fecha = new Date(value.seconds * 1000);
-    let fechaEscrita = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":"+fecha.getMinutes();
+    let fechaEscrita = fecha.getDate() + "/" + ( fecha.getMonth() + 1 ) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":"+fecha.getMinutes();
     return fechaEscrita;
 
   }

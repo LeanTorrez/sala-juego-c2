@@ -1,0 +1,18 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Jugador</th>
+        <th scope="col" (click)="ordernarFecha()">Fecha{{esFecha ? "🠻": "🠹"}}</th>
+        <th scope="col" (click)="ordernarPuntaje()">Puntaje{{esPuntaje ? "🠻": "🠹"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of listadoPuntajes; track $index) {
+            <tr>
+                <th scope="row">{{ item.email }}</th>
+                <td>{{ item.fecha | fecha}}</td>
+                <td>{{ item.puntaje}}</td>
+            </tr>
+        } 
+    </tbody>
+</table>

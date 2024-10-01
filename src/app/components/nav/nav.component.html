@@ -1,26 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row d-flex">
             <div class="col-auto">
-                <button class="btn btn-secondary btn-large" routerLink="home">Home</button>
+                <h2 style="background: -webkit-linear-gradient(#15aab2, #ca25fc);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;">SALA DE JUEGOS</h2>
             </div>
             <div class="col-auto">
-                <button class="btn btn-secondary btn-large" routerLink="quien-soy">Quien Soy</button>
+                <button class="btn btn-secondary btn-lg" routerLink="home">Home</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-secondary btn-lg" routerLink="quien-soy">Quien Soy</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-secondary btn-lg" routerLink="puntajes">Puntajes</button>
             </div>
             @if(!auth.enSesion){
-                <div class="col-auto">
-                    <button class="btn btn-secondary btn-large" routerLink="login">Iniciar Sesion</button>
+                <div class="col-auto btn-der">
+                    <button class="btn btn-secondary btn-lg" routerLink="login">Iniciar Sesion</button>
                 </div>
-                <div class="col-auto">
-                    <button class="btn btn-secondary btn-large" routerLink="registro">Registrarse</button>
+                <div class="col-auto btn-der">
+                    <button class="btn btn-secondary btn-lg" routerLink="registro">Registrarse</button>
                 </div>
             }@else {
                 <div class="col-auto">
-                    <button class="btn btn-secondary btn-large" (click)="cerrarSesion()">Cerrar Sesion</button>
+                    <button class="btn btn-secondary btn-lg" routerLink="encuesta">Encuesta</button>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-secondary btn-lg" (click)="cerrarSesion()">Cerrar Sesion</button>
                 </div>
                 <div class="col-auto bg-secondary text-light mx-2" style="border-radius: 10px;">
 
-                    <button class="btn btn-secondary btn-large" (click)="cerrarSesion()">
+                    <button class="btn btn-secondary btn-lg" (click)="cerrarSesion()">
                         <fa-icon [icon]="faSalir"></fa-icon>
                     </button>
 

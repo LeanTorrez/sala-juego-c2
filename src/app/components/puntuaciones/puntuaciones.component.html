@@ -1,0 +1,62 @@
+<div class="container py-2">
+    <div class="card bg-dark text-white" style="border-radius: 1rem; background: rgba(0, 0, 0, 0.7);">
+        <div class="card-body text-center">
+      
+            <div class="row">
+                <h3>
+                    <fa-icon [icon]="faMedalla" style="padding: 5px;"></fa-icon> Mis Puntajes <fa-icon [icon]="faMedalla" style="padding: 5px;"></fa-icon>
+                </h3>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Juego</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Puntaje</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (item of puntajesJugador; track $index) {
+                            <tr>
+                                <th scope="row">{{ item.juego}}</th>
+                                <td>{{ item.fecha | fecha}}</td>
+                                <td>{{ item.puntaje}}</td>
+                            </tr>
+                        } 
+                    </tbody>
+                </table>
+                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>
+                        Ahorcado
+                    </h3>
+                    <app-table-puntajes [listadoPuntajes]="puntajesAhorcado"></app-table-puntajes>
+                </div>
+                <div class="col">
+                    <h3>
+                        Mayor Menor
+                    </h3>
+                    <app-table-puntajes [listadoPuntajes]="puntajesMayorMenor"></app-table-puntajes>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h3>
+                        Preguntados
+                    </h3>
+                    <app-table-puntajes [listadoPuntajes]="puntajesPreguntados"></app-table-puntajes>
+                </div>
+                <div class="col">
+                    <h3>
+                        BlackJack
+                    </h3>
+                    <app-table-puntajes [listadoPuntajes]="puntajesBlackJack"></app-table-puntajes>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

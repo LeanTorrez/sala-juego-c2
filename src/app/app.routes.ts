@@ -23,6 +23,14 @@ export const routes: Routes = [
         loadComponent: () => import("./components/quien-soy/quien-soy.component").then(e => e.QuienSoyComponent)
     },
     {
+        path:"puntajes",
+        loadComponent: () => import("./components/puntuaciones/puntuaciones.component").then(e => e.PuntuacionesComponent)
+    },
+    {
+        path:"encuesta",
+        loadComponent:() => import("./components/encuesta/encuesta.component").then(e => e.EncuestaComponent)  
+    },
+    {
         path:"juegos",
         loadChildren: () => import("./components/juegos/juegos.routes"),
         /* ...canActivate(()=> redirectUnauthorizedTo(['/home'])) */

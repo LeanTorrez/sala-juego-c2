@@ -1,0 +1,8 @@
+.juegos{
+    display: flex;
+    justify-content: center;
+}
+.recomendar{
+    display: flex;
+    justify-content: center;
+}
