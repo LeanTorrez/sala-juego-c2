@@ -12,9 +12,7 @@
             <div class="col-auto">
                 <button class="btn btn-secondary btn-lg" routerLink="quien-soy">Quien Soy</button>
             </div>
-            <div class="col-auto">
-                <button class="btn btn-secondary btn-lg" routerLink="puntajes">Puntajes</button>
-            </div>
+            {{auth.enSesion}}
             @if(!auth.enSesion){
                 <div class="col-auto btn-der">
                     <button class="btn btn-secondary btn-lg" routerLink="login">Iniciar Sesion</button>
@@ -23,6 +21,9 @@
                     <button class="btn btn-secondary btn-lg" routerLink="registro">Registrarse</button>
                 </div>
             }@else {
+                <div class="col-auto">
+                    <button class="btn btn-secondary btn-lg" routerLink="puntajes">Puntajes</button>
+                </div>
                 <div class="col-auto">
                     <button class="btn btn-secondary btn-lg" routerLink="encuesta">Encuesta</button>
                 </div>

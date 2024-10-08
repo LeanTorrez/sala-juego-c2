@@ -40,6 +40,13 @@ export class ChatComponent implements OnDestroy{
   accionarChat(){
     this.mostrarChat = !this.mostrarChat;
   }
+
+  keyPress($event: KeyboardEvent){
+    console.log($event);
+    if($event.key == "Enter"){
+      this.nuevoMensaje();
+    }
+  }
  
   nuevoMensaje(){
     if(this.msj == "") return false;
@@ -52,7 +59,11 @@ export class ChatComponent implements OnDestroy{
   actualizarChat(){
     const obs = this.fireStore.observableChat();
     this.suscribe = obs.subscribe((respuesta) => {
-      this.msjArray = respuesta.sort( (b: Mensaje, a: Mensaje) => b.fecha.valueOf() - a.fecha.valueOf()); 
+      this.msjArray = respuesta.sort( (b: Mensaje, a: Mensaje) => b.fecha.valueOf() - a.fecha.valueOf());
+      const container = document.getElementById("containerMsg");
+      if(container !== null){
+        container.scrollTop = container.scrollHeight;  
+      } 
     });
   }
 

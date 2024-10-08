@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import {canActivate,redirectUnauthorizedTo,redirectLoggedInTo } from "@angular/fire/auth-guard"
+import { authChildGuard } from './guards/auth-child.guard';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {   
@@ -24,15 +26,21 @@ export const routes: Routes = [
     },
     {
         path:"puntajes",
-        loadComponent: () => import("./components/puntuaciones/puntuaciones.component").then(e => e.PuntuacionesComponent)
+        loadComponent: () => import("./components/puntuaciones/puntuaciones.component").then(e => e.PuntuacionesComponent),
+        canActivate:[authGuard]
     },
     {
         path:"encuesta",
-        loadComponent:() => import("./components/encuesta/encuesta.component").then(e => e.EncuestaComponent)  
+        loadComponent:() => import("./components/encuesta/encuesta.component").then(e => e.EncuestaComponent),
+        canActivate:[authGuard]
     },
     {
         path:"juegos",
         loadChildren: () => import("./components/juegos/juegos.routes"),
-        /* ...canActivate(()=> redirectUnauthorizedTo(['/home'])) */
-    } 
+        canActivateChild: [authChildGuard],
+    },
+    {
+        path:"**",
+        redirectTo:"home"
+    }
 ];

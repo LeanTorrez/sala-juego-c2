@@ -1,33 +1,68 @@
-import { inject, Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut} from "@angular/fire/auth";
-import { Firestore, collection, collectionData,setDoc, DocumentData, doc } from '@angular/fire/firestore';
+import { inject, Injectable, OnInit } from '@angular/core';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, User} from "@angular/fire/auth";
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FireStoreService } from './fire-store.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit {
 
   auth = inject(Auth);
   router = inject(Router);
   toast = inject(ToastrService);
   fireStore = inject(FireStoreService);
 
-  enSesion = false;
+
+  enSesion !:User | null;
   email = "";
   token = "";
+
+  currentUser!:User | null;
+  private authStatusSub = new BehaviorSubject(this.currentUser);
+  currentAuthStatus = this.authStatusSub.asObservable();
+
+  constructor(){
+    this.authStatusListener();
+    this.currentAuthStatus.subscribe(authStatus => {
+      this.enSesion = authStatus;
+      if(typeof this.enSesion?.email === "string"){
+        this.email = this.enSesion?.email;
+      }
+    });
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  authStatusListener(){
+    this.auth.onAuthStateChanged((credential)=>{
+      if(credential){
+        console.log(credential);
+        this.authStatusSub.next(credential);
+        console.log('User is logged in');
+      }
+      else{
+        this.authStatusSub.next(null);
+        console.log('User is logged out');
+      }
+    })
+  }
+  
 
   iniciarSesion(email:string, clave:string){
     signInWithEmailAndPassword(this.auth, email, clave)
     .then( (data) => {
-      this.enSesion = true;
+      this.currentUser = data.user;
+      this.enSesion = data.user;
+      console.log(this.currentUser);
+     /*  this.enSesion = true; */
       this.email = email;
-      data.user.getIdToken().then(token => this.token = token);
 
       this.fireStore.insertarLogs(email);
-
       this.router.navigate(["/home"]);
     })
     .catch(( error) => {
@@ -40,9 +75,8 @@ export class AuthService {
   registrarUsuario(email:string, clave:string){
     createUserWithEmailAndPassword(this.auth, email, clave)
     .then((data) => {
-      this.enSesion = true;
+     /*  this.enSesion = true; */
       this.email = email;
-      data.user.getIdToken().then(token => this.token = token);
 
       this.fireStore.insertarLogs(email);
 

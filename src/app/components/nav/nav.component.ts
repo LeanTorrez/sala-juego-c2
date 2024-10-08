@@ -19,7 +19,7 @@ export class NavComponent {
   faSalir = faDoorOpen;
 
   cerrarSesion(){
-    this.auth.enSesion = false;
+    /* this.auth.enSesion = false; */
     this.auth.email = "";
     this.auth.token = "";
     this.auth.cerrarSesion();
